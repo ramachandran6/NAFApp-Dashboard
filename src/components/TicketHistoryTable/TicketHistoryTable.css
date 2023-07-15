@@ -1,0 +1,32 @@
+.tableCard {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.thTable {
+    margin-top: 30%;
+    border-radius: 1em;
+    width: 40rem;
+    height: auto;
+    margin: 2rem auto;
+    padding: 5rem;
+    display: block;
+    background-color: #d1d4e3;
+    box-sizing: border-box;
+}
+
+.thHeader {
+	border-bottom: 1px solid black;
+}
+
+.thData {
+	text-align: center;
+}

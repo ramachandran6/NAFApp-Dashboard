@@ -1,0 +1,52 @@
+table {
+    /* margin-top:20px; */
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+.input-cticket{
+    width: 100px;
+}
+  .btn {
+    padding: 20px;
+    border:none;
+    cursor: pointer;
+    background-color: #9B9FB5;
+  }
+
+  .search-container{
+    
+    margin: 5px;
+  }
+
+  .btn:hover {
+    padding: 20px;
+    background-color: black;
+    color: aliceblue;
+  }
+
+  .topContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #9B9FB5;
+  }
+
+  .searchBar{
+    border: none;
+    padding: 10px;
+}
+.searchBtn{
+    padding: 10px;
+    background-color: none;
+}
