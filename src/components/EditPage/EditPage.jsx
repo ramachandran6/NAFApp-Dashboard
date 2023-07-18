@@ -3,20 +3,20 @@ import EditPageValidation from "./EditPageValidation";
 import { useEffect, useState } from "react";
 
 export function EditPage(props) {
-  const [status, setstatus] = useState(props.data.status);
+  const [status, setstatus] = useState(props.val.status);
   const [destinationdepartment, setDestinationdepartment] = useState("");
-  const [enddatetime, setEnddatetime] = useState(props.data.endDate);
-  const [ticketpriority, setTicketpriority] = useState(props.data.priority);
-  const [ticketseverity, setTicketseverity] = useState(props.data.severity);
-  const [attachments, setAttachments] = useState(props.data.attachments);
+  const [enddatetime, setEnddatetime] = useState(props.val.endDate);
+  const [ticketpriority, setTicketpriority] = useState(props.val.priority);
+  const [ticketseverity, setTicketseverity] = useState(props.val.severity);
+  const [attachments, setAttachments] = useState(props.val.attachments);
 
     useEffect(() => {
-        fetch(`https://localhost:7264/LookUpDetails/${props.data.departmentLookUpId}`, {
+        fetch(`https://localhost:7264/LookUpDetails/${props.val.departmentLookUpId}`, {
            method : 'GET'
         }).then((res) => res.json).then((val) => { setDestinationdepartment(val.value); console.log(val)})
     },[])
   const [errors, setErrors] = useState({});
-    console.log(props.data)
+    // console.log(props.data)
   const handleFormSubmit = (event) => {
       event.preventDefault();
       
@@ -28,8 +28,10 @@ export function EditPage(props) {
       attachments: attachments,
       status:status
     });
-
-    console.log(jsonObject);
+      console.log(jsonObject.priority);
+      console.log(jsonObject.severity)
+    //   console.log(jsonObject);
+    //   console.log(props.val)
     // axios.get("https://localhost:7264/TicketDetails",querystring.stringify(jsonObject)).then((res)=> console.log(res));
     // axios.post("https://localhost:7264/TicketDetails/1",jsonObject).then((res)=> console.log(res));
 
@@ -87,19 +89,18 @@ export function EditPage(props) {
 
         <div className="tktpriority">
           <label className="lbl">
-            Ticket Priority : <span style={{ color: "red" }}>*</span>{" "}
+            Ticket Priority : <span style={{ color: "red" }}>*</span>
           </label>
           <select
             className="input-cticket"
             id="tktpriority"
-            onChange={(event)=> setTicketpriority(event.target.value)}
+            onChange={(event)=>setTicketpriority(event.target.value)}
           >
-            <option value={0}>--Select--</option>
+            <option value={0}>--select--</option>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
             <option value={4}>4</option>
-            <option value={5}>5</option>
           </select>
         </div>
 
@@ -117,7 +118,6 @@ export function EditPage(props) {
             <option value={2}>2</option>
             <option value={3}>3</option>
             <option value={4}>4</option>
-            <option value={5}>5</option>
           </select>
         </div>
 
@@ -135,7 +135,7 @@ export function EditPage(props) {
         </div>
         <div className="status">
           <label className="lbl">Status : </label>
-          <textarea
+          <input
             className="input-cticket"
             type="text"
             name="status"

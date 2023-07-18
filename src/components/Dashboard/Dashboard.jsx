@@ -17,7 +17,8 @@ const Dashboard = () => {
   
   const handleEscalate = (id) => {
     axios.get(`https://localhost:7264/Escalate/${id}`).then((res) => {window.location.reload(); console.log(res)}).catch((er) => console.log(er));
-}
+  }
+
 const handleDelete = (id,userId) => {
     axios
   .delete(`https://localhost:7264/TicketDetails/${id}&${userId}`)
@@ -79,6 +80,8 @@ const handleDelete = (id,userId) => {
             <th>Status</th>
             <th>start date</th>
             <th>end date</th>
+            <th>priority</th>
+            <th>severity</th>
             <th>due by</th>
             <th>view</th>
             <th>edit</th>
@@ -95,7 +98,9 @@ const handleDelete = (id,userId) => {
                       <td>{val.owner}</td>
                       <td>{val.status}</td>
                       <td>{val.startDate}</td>
-                      <td>{val.endDate}</td>
+                  <td>{val.endDate}</td>
+                  <td>{val.priority}</td>
+                  <td>{ val.severity}</td>
                       <td>{val.age}</td>
                       <td><Popup trigger={<i className="fas fa-sharp fa-solid fa-eye"></i>} modal nested>
                           {close => (
@@ -104,7 +109,7 @@ const handleDelete = (id,userId) => {
                         </Popup></td>
                         <td><Popup trigger={<i className="fas fa-duotone fa-pen-to-square"></i>} modal nested>
                             {close => (
-                                <EditPage data={val} close={close} />
+                                <EditPage val={val} close={close} />
                             )}
                       </Popup></td>
                       <td><i onClick={() => handleDelete(val.id,val.userId)} className="fas fa-solid fa-trash" style={{color: 'red'}}></i></td>
